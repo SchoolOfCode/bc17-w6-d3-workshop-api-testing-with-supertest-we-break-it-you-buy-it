@@ -23,17 +23,22 @@ test("GET /api/health works", async () => {
 // Ticket 6
 // write a test skeleton with a descriptive test name ("GET /api/users" could be a starting point)
 test("GET /api/users works", async () => {
+  // ARRANGE
   await resetUsersTable(seedData);
+  
+  // ACT
   const response = await request(app).get("/api/users/");
-  // const resBody = {
-  //   success: true,
-  //   payload: "API is running correctly",
-  // };
+
+  const resBody = response.body
+  const resBodySuccess = response.body.success
   const statusCode = 200;
   // check response body
   // expect(response.body).toEqual(resBody);
   // check status code
+  expect(resBody).toBeTypeOf("object");
   expect(response.status).toEqual(statusCode);
+  expect(resBody.payload).toBeTypeOf("object");
+  expect(resBodySuccess).toBe(true);
   // check response headers
   expect(response.headers["content-type"]).toMatch("application/json");
 });
