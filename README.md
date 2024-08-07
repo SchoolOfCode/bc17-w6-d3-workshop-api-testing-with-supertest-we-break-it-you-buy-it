@@ -53,7 +53,7 @@ Your next task is to create a `users.test.js` file within the `users` folder. Th
 
 Whilst exploring the codebase earlier, you may have noticed a `GET /api/health` endpoint in the `app.js` file. Your next task is to learn how to use Supertest to send a GET request to this API endpoint within the test you started in the previous ticket. Your manager's tied up in a meeting for the next couple of hours, so looks like you and your team will have to figure things out on your own.
 
-Below is an example you've found online at https://www.npmjs.com/package/supertest:
+Below is an example you've found online at https://www.npjsm.com/package/supertest:
 
 ```js
 const request = require("supertest");
@@ -67,7 +67,9 @@ app.get("/user", function (req, res) {
 
 describe("GET /users", function () {
   it("responds with json", async function () {
-    const response = await request(app).get("/users").set("Accept", "application/json");
+    const response = await request(app)
+      .get("/users")
+      .set("Accept", "application/json");
     expect(response.headers["Content-Type"]).toMatch(/json/);
     expect(response.status).toEqual(200);
     expect(response.body.email).toEqual("foo@bar.com");

@@ -1,12 +1,17 @@
-import { test, expect } from "vitest"
-import request from "supertest"
-import app from "../app.js"
+import { test, expect } from "vitest";
+import request from "supertest";
+import app from "../app.js";
 
-// test("GET /api/health works")
-
-request(app)
-    .get('/api/health')
-    .expect(200)
-    .end(function(err, res) {
-    if (err) throw err;
-    });
+// Test API health
+test("GET /api/health works", async () => {
+  const response = await request(app).get("/api/health");
+  const resBody = {
+    success: true,
+    payload: "API is running correctly",
+  };
+  const statusCode = 200;
+  // check response body
+  expect(response.body).toEqual(resBody);
+  // check status code
+  expect(response.status).toEqual(statusCode);
+});

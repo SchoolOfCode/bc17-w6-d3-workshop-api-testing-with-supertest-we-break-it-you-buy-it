@@ -14,7 +14,8 @@
   },
   "scripts": {
     "dev": "nodemon -r dotenv/config ./server.js",
-    "db-reset": "node -r dotenv/config ./db/scripts/reset-table.js"
+    "db-reset": "node -r dotenv/config ./db/scripts/reset-table.js",
+    "test": "npx vitest"
   },
   "type": "module"
 }
