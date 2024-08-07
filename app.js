@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import logger from "morgan";
 import usersRouter from "./users/users.router.js";
 

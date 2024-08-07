@@ -14,4 +14,6 @@ test("GET /api/health works", async () => {
   expect(response.body).toEqual(resBody);
   // check status code
   expect(response.status).toEqual(statusCode);
+  // check response headers
+  expect(response.headers["content-type"]).toMatch('application/json');
 });
